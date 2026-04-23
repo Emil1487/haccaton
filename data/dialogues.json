@@ -1,0 +1,164 @@
+{
+  "toma_dialogue": {
+    "start": "intro",
+    "nodes": {
+      "intro": {
+        "speaker": "Тома",
+        "text": "Я хочу пройти. Моя сестра по ту сторону.",
+        "choices": [
+          {
+            "text": "Проверить документы",
+            "next": "docs",
+            "action": "check_docs"
+          },
+          {
+            "text": "Пропустить",
+            "next": "end",
+            "action": "pass",
+            "consequences": {"energy": -2, "trust": 5, "flags": {"toma_passed": true}}
+          },
+          {
+            "text": "Отказать",
+            "next": "end",
+            "action": "reject",
+            "consequences": {"trust": -5, "stability": -2}
+          }
+        ]
+      },
+      "docs": {
+        "speaker": "system",
+        "text": "Документы выглядят подлинными.",
+        "choices": [
+          {
+            "text": "Пропустить",
+            "next": "end",
+            "action": "pass",
+            "consequences": {"energy": -1, "trust": 3}
+          },
+          {
+            "text": "Отказать",
+            "next": "end",
+            "action": "reject",
+            "consequences": {"trust": -3}
+          }
+        ]
+      }
+    }
+  },
+
+  "mei_dialogue": {
+    "start": "intro",
+    "nodes": {
+      "intro": {
+        "speaker": "Мэй",
+        "text": "Я торговка. У меня разрешение.",
+        "choices": [
+          {"text": "Осмотреть багаж", "next": "baggage", "action": "check_baggage"},
+          {"text": "Пропустить", "next": "end", "action": "pass",
+           "consequences": {"energy": -2, "attention": 5}},
+          {"text": "Отказать", "next": "end", "action": "reject",
+           "consequences": {"trust": -4}}
+        ]
+      },
+      "baggage": {
+        "speaker": "system",
+        "text": "Вы находите скрытые артефакты.",
+        "choices": [
+          {"text": "Конфисковать и пропустить", "next": "end",
+           "action": "pass",
+           "consequences": {"energy": -3, "stability": 3}},
+          {"text": "Арестовать", "next": "end",
+           "action": "reject",
+           "consequences": {"trust": 2, "attention": 10}}
+        ]
+      }
+    }
+  },
+
+  "vira_dialogue": {
+    "start": "intro",
+    "nodes": {
+      "intro": {
+        "speaker": "Вира",
+        "text": "Я бегу от войны.",
+        "choices": [
+          {"text": "Сочувствовать", "next": "empathy", "action": "talk"},
+          {"text": "Пропустить", "next": "end", "action": "pass",
+           "consequences": {"energy": -2, "trust": 4}},
+          {"text": "Отказать", "next": "end", "action": "reject",
+           "consequences": {"stability": -5}}
+        ]
+      },
+      "empathy": {
+        "speaker": "Вира",
+        "text": "Спасибо, что слушаете...",
+        "choices": [
+          {"text": "Пропустить", "next": "end",
+           "action": "pass",
+           "consequences": {"energy": -1, "trust": 6}},
+          {"text": "Отказать", "next": "end",
+           "action": "reject",
+           "consequences": {"trust": -6}}
+        ]
+      }
+    }
+  },
+
+  "kai_dialogue": {
+    "start": "intro",
+    "nodes": {
+      "intro": {
+        "speaker": "Кай",
+        "text": "Мне нельзя здесь оставаться.",
+        "choices": [
+          {"text": "Проверить документы", "next": "docs", "action": "check_docs"},
+          {"text": "Пропустить", "next": "end", "action": "pass",
+           "consequences": {"energy": -2, "flags": {"kai_passed": true}}},
+          {"text": "Отказать", "next": "end", "action": "reject",
+           "consequences": {"trust": -3}}
+        ]
+      },
+      "docs": {
+        "speaker": "system",
+        "text": "Документы частично поддельные.",
+        "choices": [
+          {"text": "Пропустить несмотря ни на что", "next": "end",
+           "action": "pass",
+           "consequences": {"energy": -3, "stability": -5}},
+          {"text": "Отказать", "next": "end",
+           "action": "reject",
+           "consequences": {"trust": 2}}
+        ]
+      }
+    }
+  },
+
+  "nita_dialogue": {
+    "start": "intro",
+    "nodes": {
+      "intro": {
+        "speaker": "Нита",
+        "text": "Я исследователь порталов.",
+        "choices": [
+          {"text": "Задать вопросы", "next": "questions", "action": "talk"},
+          {"text": "Пропустить", "next": "end", "action": "pass",
+           "consequences": {"energy": -2, "attention": 5}},
+          {"text": "Отказать", "next": "end", "action": "reject",
+           "consequences": {"trust": -4}}
+        ]
+      },
+      "questions": {
+        "speaker": "Нита",
+        "text": "Я могу стабилизировать разлом.",
+        "choices": [
+          {"text": "Пропустить и сотрудничать", "next": "end",
+           "action": "pass",
+           "consequences": {"energy": -2, "stability": 8}},
+          {"text": "Отказать", "next": "end",
+           "action": "reject",
+           "consequences": {"stability": -3}}
+        ]
+      }
+    }
+  }
+}
