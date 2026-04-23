@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Тома",
+    "age": 19,
+    "origin": "город",
+    "destination": "перевал",
+    "portrait_path": "assets/images/portraits/toma.png",
+    "dialogue_id": "toma_dialogue",
+    "energy_cost": 2
+  },
+  {
+    "name": "Мэй",
+    "age": 32,
+    "origin": "рынок",
+    "destination": "город",
+    "portrait_path": "assets/images/portraits/mei.png",
+    "dialogue_id": "mei_dialogue",
+    "energy_cost": 2
+  },
+  {
+    "name": "Вира",
+    "age": 27,
+    "origin": "перевал",
+    "destination": "город",
+    "portrait_path": "assets/images/portraits/vira.png",
+    "dialogue_id": "vira_dialogue",
+    "energy_cost": 2
+  },
+  {
+    "name": "Кай",
+    "age": 41,
+    "origin": "космопорт",
+    "destination": "неизвестно",
+    "portrait_path": "assets/images/portraits/kai.png",
+    "dialogue_id": "kai_dialogue",
+    "energy_cost": 3
+  },
+  {
+    "name": "Нита",
+    "age": 35,
+    "origin": "неизвестно",
+    "destination": "космопорт",
+    "portrait_path": "assets/images/portraits/nita.png",
+    "dialogue_id": "nita_dialogue",
+    "energy_cost": 2
+  }
+]
