@@ -1,47 +1,344 @@
 [
   {
-    "name": "Тома",
-    "age": 19,
-    "origin": "город",
-    "destination": "перевал",
-    "portrait_path": "assets/images/portraits/toma.png",
-    "dialogue_id": "toma_dialogue",
-    "energy_cost": 2
+    "id": "toma",
+    "name": "Тома Барнс",
+    "age": 34,
+    "origin": "city",
+    "destination": "market",
+    "portrait": "portraits/toma.png",
+    "dialogue_id": "toma_day1",
+    "energy_cost": 2,
+    "secret": null,
+    "day": 1,
+    "order": 1,
+    "documents": {
+      "text": "Рабочее удостоверение. Город Серых Стен. Действительно.",
+      "suspicious": false
+    },
+    "baggage": {
+      "text": "Холщовая сумка. Деньги на травы.",
+      "has_contraband": false
+    }
   },
   {
-    "name": "Мэй",
-    "age": 32,
-    "origin": "рынок",
-    "destination": "город",
-    "portrait_path": "assets/images/portraits/mei.png",
-    "dialogue_id": "mei_dialogue",
-    "energy_cost": 2
+    "id": "mei",
+    "name": "Мэй Суань",
+    "age": 45,
+    "origin": "market",
+    "destination": "market",
+    "portrait": "portraits/mei.png",
+    "dialogue_id": "mei_day1",
+    "energy_cost": 2,
+    "secret": "contraband_spices",
+    "day": 1,
+    "order": 2,
+    "documents": {
+      "text": "Торговая лицензия Ночного Рынка.",
+      "suspicious": false
+    },
+    "baggage": {
+      "text": "Корзина специй. Запах слишком резкий.",
+      "has_contraband": true
+    }
+  },
+
+  {
+    "id": "vira",
+    "name": "Вира Кёниг",
+    "age": 31,
+    "origin": "market",
+    "destination": "city",
+    "portrait": "portraits/vira.png",
+    "dialogue_id": "vira_day2",
+    "energy_cost": 3,
+    "secret": "drug_powder",
+    "day": 2,
+    "order": 1,
+    "documents": {
+      "text": "Разрешение на перевозку медикаментов. Объём подозрительный.",
+      "suspicious": true
+    },
+    "baggage": {
+      "text": "Ящики с лекарствами. В одном — скрытый порошок.",
+      "has_contraband": true
+    }
   },
   {
-    "name": "Вира",
-    "age": 27,
-    "origin": "перевал",
-    "destination": "город",
-    "portrait_path": "assets/images/portraits/vira.png",
-    "dialogue_id": "vira_dialogue",
-    "energy_cost": 2
+    "id": "kai",
+    "name": "Отец Кай",
+    "age": 67,
+    "origin": "pass",
+    "destination": "spaceport",
+    "portrait": "portraits/kai.png",
+    "dialogue_id": "kai_day2",
+    "energy_cost": 3,
+    "secret": "secret_message",
+    "day": 2,
+    "order": 2,
+    "documents": {
+      "text": "Паломническое разрешение.",
+      "suspicious": false
+    },
+    "baggage": {
+      "text": "Свиток с координатами убежища.",
+      "has_contraband": false
+    }
   },
   {
-    "name": "Кай",
-    "age": 41,
-    "origin": "космопорт",
-    "destination": "неизвестно",
-    "portrait_path": "assets/images/portraits/kai.png",
-    "dialogue_id": "kai_dialogue",
-    "energy_cost": 3
+    "id": "nita",
+    "name": "Нита Ольсен",
+    "age": 14,
+    "origin": "city",
+    "destination": "pass",
+    "portrait": "portraits/nita.png",
+    "dialogue_id": "nita_day2",
+    "energy_cost": 2,
+    "secret": null,
+    "day": 2,
+    "order": 3,
+    "documents": {
+      "text": "Документов нет.",
+      "suspicious": true
+    },
+    "baggage": {
+      "text": "Маленький рюкзак. Письмо отцу.",
+      "has_contraband": false
+    }
+  },
+
+  {
+    "id": "rust",
+    "name": "Капитан Руст",
+    "age": 48,
+    "origin": "spaceport",
+    "destination": null,
+    "portrait": "portraits/rust.png",
+    "dialogue_id": "rust_day3",
+    "energy_cost": 0,
+    "secret": "brother_missing",
+    "day": 3,
+    "order": 1,
+    "documents": {
+      "text": "Военный допуск.",
+      "suspicious": false
+    },
+    "baggage": {
+      "text": "Планшет с журналами станции.",
+      "has_contraband": false
+    }
   },
   {
-    "name": "Нита",
+    "id": "zoya",
+    "name": "Зоя",
+    "age": 8,
+    "origin": "unknown",
+    "destination": "unknown",
+    "portrait": "portraits/zoya.png",
+    "dialogue_id": "zoya_day3",
+    "energy_cost": 2,
+    "secret": "echo_link",
+    "day": 3,
+    "order": 2,
+    "documents": {
+      "text": "Нет документов.",
+      "suspicious": true
+    },
+    "baggage": {
+      "text": "Игрушечная птица.",
+      "has_contraband": false
+    }
+  },
+  {
+    "id": "yan_reya",
+    "name": "Ян и Рея",
+    "age": 22,
+    "origin": "city",
+    "destination": "market",
+    "portrait": "portraits/yan_reya.png",
+    "dialogue_id": "yan_reya_day3",
+    "energy_cost": 4,
+    "secret": "wanted_family",
+    "day": 3,
+    "order": 3,
+    "documents": {
+      "text": "Раздельные паспорта разных миров.",
+      "suspicious": false
+    },
+    "baggage": {
+      "text": "Один чемодан на двоих.",
+      "has_contraband": false
+    }
+  },
+
+  {
+    "id": "grey",
+    "name": "Советник Грей",
+    "age": 52,
+    "origin": "city",
+    "destination": null,
+    "portrait": "portraits/grey.png",
+    "dialogue_id": "grey_day4",
+    "energy_cost": 0,
+    "secret": "political_pressure",
+    "day": 4,
+    "order": 1,
+    "documents": {
+      "text": "Государственная печать.",
+      "suspicious": false
+    },
+    "baggage": {
+      "text": "Папка с распоряжениями.",
+      "has_contraband": false
+    }
+  },
+  {
+    "id": "hasan",
+    "name": "Старик Хасан",
+    "age": 74,
+    "origin": "market",
+    "destination": "pass",
+    "portrait": "portraits/hasan.png",
+    "dialogue_id": "hasan_day4",
+    "energy_cost": 2,
+    "secret": null,
+    "day": 4,
+    "order": 2,
+    "documents": {
+      "text": "Разрешение старого образца.",
+      "suspicious": false
+    },
+    "baggage": {
+      "text": "Старый медальон дочери.",
+      "has_contraband": false
+    }
+  },
+  {
+    "id": "polly",
+    "name": "Инженер Полли",
     "age": 35,
-    "origin": "неизвестно",
-    "destination": "космопорт",
-    "portrait_path": "assets/images/portraits/nita.png",
-    "dialogue_id": "nita_dialogue",
-    "energy_cost": 2
+    "origin": "spaceport",
+    "destination": null,
+    "portrait": "portraits/polly.png",
+    "dialogue_id": "polly_day4",
+    "energy_cost": 0,
+    "secret": "generator_ai",
+    "day": 4,
+    "order": 3,
+    "documents": {
+      "text": "Инженерный допуск Космопорта.",
+      "suspicious": false
+    },
+    "baggage": {
+      "text": "Инструменты и диагностический модуль.",
+      "has_contraband": false
+    }
+  },
+
+  {
+    "id": "refugees",
+    "name": "Группа беженцев",
+    "age": 0,
+    "origin": "pass",
+    "destination": "city",
+    "portrait": "portraits/refugees.png",
+    "dialogue_id": "refugees_day5",
+    "energy_cost": 3,
+    "secret": null,
+    "day": 5,
+    "order": 1,
+    "documents": {
+      "text": "Семь временных пропусков. Истекают сегодня.",
+      "suspicious": false
+    },
+    "baggage": {
+      "text": "Скудные пожитки. Младенец. Медицинская сумка.",
+      "has_contraband": false
+    }
+  },
+  {
+    "id": "elias",
+    "name": "Элиас",
+    "age": 38,
+    "origin": "unknown",
+    "destination": null,
+    "portrait": "portraits/elias.png",
+    "dialogue_id": "elias_day5",
+    "energy_cost": 0,
+    "secret": "truth_about_lina",
+    "day": 5,
+    "order": 2,
+    "documents": {
+      "text": "",
+      "suspicious": false
+    },
+    "baggage": {
+      "text": "Старый медальон с трещиной.",
+      "has_contraband": false
+    }
+  },
+
+  {
+    "id": "cross",
+    "name": "Лейтенант Кросс",
+    "age": 44,
+    "origin": "spaceport",
+    "destination": null,
+    "portrait": "portraits/cross.png",
+    "dialogue_id": "cross_day6",
+    "energy_cost": 0,
+    "secret": "final_ultimatum",
+    "day": 6,
+    "order": 1,
+    "documents": {
+      "text": "Военный приказ с печатью Руста.",
+      "suspicious": false
+    },
+    "baggage": {
+      "text": "Кобура и официальный приказ.",
+      "has_contraband": false
+    }
+  },
+  {
+    "id": "vira_return",
+    "name": "Вира Кёниг",
+    "age": 31,
+    "origin": "market",
+    "destination": "city",
+    "portrait": "portraits/vira.png",
+    "dialogue_id": "vira_day6",
+    "energy_cost": 2,
+    "secret": null,
+    "day": 6,
+    "order": 2,
+    "documents": {
+      "text": "Новое разрешение.",
+      "suspicious": false
+    },
+    "baggage": {
+      "text": "Только лекарства.",
+      "has_contraband": false
+    }
+  },
+
+  {
+    "id": "final_echo",
+    "name": "Эхо",
+    "age": 0,
+    "origin": "station",
+    "destination": null,
+    "portrait": "portraits/echo.png",
+    "dialogue_id": "final_day7",
+    "energy_cost": 0,
+    "secret": "final_choice",
+    "day": 7,
+    "order": 99,
+    "documents": {
+      "text": "",
+      "suspicious": false
+    },
+    "baggage": {
+      "text": "",
+      "has_contraband": false
+    }
   }
 ]
