@@ -1,164 +1,998 @@
 {
-  "toma_dialogue": {
+  "toma_day1": {
     "start": "intro",
     "nodes": {
       "intro": {
         "speaker": "Тома",
-        "text": "Я хочу пройти. Моя сестра по ту сторону.",
+        "text": "Мне нужно на Ночной Рынок. Жене нужны травы.",
         "choices": [
-          {
-            "text": "Проверить документы",
-            "next": "docs",
-            "action": "check_docs"
-          },
-          {
-            "text": "Пропустить",
-            "next": "end",
-            "action": "pass",
-            "consequences": {"energy": -2, "trust": 5, "flags": {"toma_passed": true}}
-          },
-          {
-            "text": "Отказать",
-            "next": "end",
-            "action": "reject",
-            "consequences": {"trust": -5, "stability": -2}
-          }
+          { "text": "Проверить документы", "next": "docs" },
+          { "text": "Пропустить", "next": "pass" },
+          { "text": "Отказать", "next": "reject" }
         ]
       },
       "docs": {
         "speaker": "system",
-        "text": "Документы выглядят подлинными.",
+        "text": "Документы в порядке. Нарушений нет.",
+        "choices": [
+          { "text": "Пропустить", "next": "pass" },
+          { "text": "Отказать", "next": "reject" }
+        ]
+      },
+      "pass": {
+        "speaker": "system",
+        "text": "Тома благодарит тебя.",
         "choices": [
           {
-            "text": "Пропустить",
+            "text": "Далее",
             "next": "end",
-            "action": "pass",
-            "consequences": {"energy": -1, "trust": 3}
-          },
+            "consequences": {
+              "energy": -2,
+              "trust": 5,
+              "flags": { "toma_passed": true }
+            }
+          }
+        ]
+      },
+      "reject": {
+        "speaker": "system",
+        "text": "Тома уходит, не оглядываясь.",
+        "choices": [
           {
-            "text": "Отказать",
+            "text": "Далее",
             "next": "end",
-            "action": "reject",
-            "consequences": {"trust": -3}
+            "consequences": {
+              "trust": -5,
+              "flags": { "toma_rejected": true }
+            }
           }
         ]
       }
     }
   },
 
-  "mei_dialogue": {
+  "mei_day1": {
     "start": "intro",
     "nodes": {
       "intro": {
         "speaker": "Мэй",
-        "text": "Я торговка. У меня разрешение.",
+        "text": "Я просто возвращаюсь домой. День был длинный.",
         "choices": [
-          {"text": "Осмотреть багаж", "next": "baggage", "action": "check_baggage"},
-          {"text": "Пропустить", "next": "end", "action": "pass",
-           "consequences": {"energy": -2, "attention": 5}},
-          {"text": "Отказать", "next": "end", "action": "reject",
-           "consequences": {"trust": -4}}
+          { "text": "Проверить багаж", "next": "baggage" },
+          { "text": "Пропустить", "next": "pass" },
+          { "text": "Отказать", "next": "reject" }
         ]
       },
       "baggage": {
         "speaker": "system",
-        "text": "Вы находите скрытые артефакты.",
+        "text": "Ты находишь запрещённые пряности.",
         "choices": [
-          {"text": "Конфисковать и пропустить", "next": "end",
-           "action": "pass",
-           "consequences": {"energy": -3, "stability": 3}},
-          {"text": "Арестовать", "next": "end",
-           "action": "reject",
-           "consequences": {"trust": 2, "attention": 10}}
-        ]
-      }
-    }
-  },
-
-  "vira_dialogue": {
-    "start": "intro",
-    "nodes": {
-      "intro": {
-        "speaker": "Вира",
-        "text": "Я бегу от войны.",
-        "choices": [
-          {"text": "Сочувствовать", "next": "empathy", "action": "talk"},
-          {"text": "Пропустить", "next": "end", "action": "pass",
-           "consequences": {"energy": -2, "trust": 4}},
-          {"text": "Отказать", "next": "end", "action": "reject",
-           "consequences": {"stability": -5}}
+          { "text": "Конфисковать и пропустить", "next": "confiscate" },
+          { "text": "Отказать", "next": "reject" }
         ]
       },
-      "empathy": {
-        "speaker": "Вира",
-        "text": "Спасибо, что слушаете...",
+      "pass": {
+        "speaker": "system",
+        "text": "Мэй улыбается шире обычного.",
         "choices": [
-          {"text": "Пропустить", "next": "end",
-           "action": "pass",
-           "consequences": {"energy": -1, "trust": 6}},
-          {"text": "Отказать", "next": "end",
-           "action": "reject",
-           "consequences": {"trust": -6}}
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "energy": -2,
+              "attention": 5,
+              "flags": { "mei_passed_full": true }
+            }
+          }
+        ]
+      },
+      "confiscate": {
+        "speaker": "system",
+        "text": "Пряности остаются на станции.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "energy": -2,
+              "stability": 3,
+              "flags": { "mei_confiscated": true }
+            }
+          }
+        ]
+      },
+      "reject": {
+        "speaker": "system",
+        "text": "Мэй фыркает и уходит.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "trust": -4,
+              "flags": { "mei_rejected": true }
+            }
+          }
         ]
       }
     }
   },
 
-  "kai_dialogue": {
+  "vira_day2": {
     "start": "intro",
     "nodes": {
       "intro": {
-        "speaker": "Кай",
-        "text": "Мне нельзя здесь оставаться.",
+        "speaker": "Вира",
+        "text": "Лекарства для города. Люди умирают.",
         "choices": [
-          {"text": "Проверить документы", "next": "docs", "action": "check_docs"},
-          {"text": "Пропустить", "next": "end", "action": "pass",
-           "consequences": {"energy": -2, "flags": {"kai_passed": true}}},
-          {"text": "Отказать", "next": "end", "action": "reject",
-           "consequences": {"trust": -3}}
+          { "text": "Проверить документы", "next": "docs" },
+          { "text": "Проверить багаж", "next": "baggage" },
+          { "text": "Пропустить всё", "next": "pass_all" },
+          { "text": "Отказать", "next": "reject" }
         ]
       },
       "docs": {
         "speaker": "system",
-        "text": "Документы частично поддельные.",
+        "text": "Разрешение настоящее, но объём слишком большой.",
         "choices": [
-          {"text": "Пропустить несмотря ни на что", "next": "end",
-           "action": "pass",
-           "consequences": {"energy": -3, "stability": -5}},
-          {"text": "Отказать", "next": "end",
-           "action": "reject",
-           "consequences": {"trust": 2}}
+          { "text": "Проверить багаж", "next": "baggage" },
+          { "text": "Пропустить", "next": "pass_all" }
+        ]
+      },
+      "baggage": {
+        "speaker": "system",
+        "text": "Среди лекарств скрыт порошок.",
+        "choices": [
+          { "text": "Конфронтация", "next": "confront" },
+          { "text": "Частично пропустить", "next": "partial" },
+          { "text": "Отказать", "next": "reject" }
+        ]
+      },
+      "confront": {
+        "speaker": "Вира",
+        "text": "Порошок нужен, чтобы снять боль. Да, он вызывает зависимость.",
+        "choices": [
+          { "text": "Пропустить всё", "next": "pass_all" },
+          { "text": "Частично", "next": "partial" },
+          { "text": "Отказать", "next": "reject" }
+        ]
+      },
+      "pass_all": {
+        "speaker": "system",
+        "text": "Вира проходит со всем грузом.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "energy": -3,
+              "trust": 5,
+              "flags": { "vira_helped": true }
+            }
+          }
+        ]
+      },
+      "partial": {
+        "speaker": "system",
+        "text": "Порошок конфискован. Лекарства пропущены.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "energy": -3,
+              "stability": 2,
+              "flags": { "vira_partial": true }
+            }
+          }
+        ]
+      },
+      "reject": {
+        "speaker": "system",
+        "text": "Вира смотрит на тебя холодно.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "trust": -5,
+              "flags": { "vira_rejected": true }
+            }
+          }
         ]
       }
     }
   },
 
-  "nita_dialogue": {
+  "kai_day2": {
+    "start": "intro",
+    "nodes": {
+      "intro": {
+        "speaker": "Отец Кай",
+        "text": "Я несу послание тем, кто скрывается.",
+        "choices": [
+          { "text": "Спросить о послании", "next": "parable" },
+          { "text": "Пропустить", "next": "pass" },
+          { "text": "Отказать", "next": "reject" }
+        ]
+      },
+      "parable": {
+        "speaker": "Отец Кай",
+        "text": "Иногда путь — это не шаг вперёд, а шаг в сторону.",
+        "choices": [
+          { "text": "Пропустить", "next": "pass" },
+          { "text": "Отказать", "next": "reject" }
+        ]
+      },
+      "pass": {
+        "speaker": "system",
+        "text": "Монах тихо кланяется.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "energy": -3,
+              "flags": { "kai_passed": true }
+            }
+          }
+        ]
+      },
+      "reject": {
+        "speaker": "system",
+        "text": "Кай уходит медленно.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "trust": -2,
+              "flags": { "kai_rejected": true }
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  "nita_day2": {
     "start": "intro",
     "nodes": {
       "intro": {
         "speaker": "Нита",
-        "text": "Я исследователь порталов.",
+        "text": "Я ищу отца. Он на Перевале.",
         "choices": [
-          {"text": "Задать вопросы", "next": "questions", "action": "talk"},
-          {"text": "Пропустить", "next": "end", "action": "pass",
-           "consequences": {"energy": -2, "attention": 5}},
-          {"text": "Отказать", "next": "end", "action": "reject",
-           "consequences": {"trust": -4}}
+          { "text": "Расспросить", "next": "ask" },
+          { "text": "Пропустить", "next": "pass" },
+          { "text": "Оставить на станции", "next": "stay" },
+          { "text": "Отправить обратно", "next": "reject" }
         ]
       },
-      "questions": {
+      "ask": {
         "speaker": "Нита",
-        "text": "Я могу стабилизировать разлом.",
+        "text": "Он дезертировал. Но он не плохой.",
         "choices": [
-          {"text": "Пропустить и сотрудничать", "next": "end",
-           "action": "pass",
-           "consequences": {"energy": -2, "stability": 8}},
-          {"text": "Отказать", "next": "end",
-           "action": "reject",
-           "consequences": {"stability": -3}}
+          { "text": "Пропустить", "next": "pass" },
+          { "text": "Оставить", "next": "stay" },
+          { "text": "Отправить обратно", "next": "reject" }
+        ]
+      },
+      "pass": {
+        "speaker": "system",
+        "text": "Девочка проходит на Перевал.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "energy": -2,
+              "trust": 4,
+              "flags": { "nita_passed": true }
+            }
+          }
+        ]
+      },
+      "stay": {
+        "speaker": "system",
+        "text": "Нита остаётся на станции.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "flags": { "nita_stayed": true }
+            }
+          }
+        ]
+      },
+      "reject": {
+        "speaker": "system",
+        "text": "Ниту отправляют обратно в Город.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "trust": -3,
+              "flags": { "nita_rejected": true }
+            }
+          }
         ]
       }
     }
   }
+  ,
+
+  "rust_day3": {
+    "start": "intro",
+    "nodes": {
+      "intro": {
+        "speaker": "Капитан Руст",
+        "text": "Мне нужен доступ к журналу станции.",
+        "choices": [
+          { "text": "Зачем?", "next": "ask" },
+          { "text": "Отказать", "next": "reject" },
+          { "text": "Сотрудничать", "next": "cooperate" }
+        ]
+      },
+      "ask": {
+        "speaker": "Руст",
+        "text": "Мой брат исчез здесь десять лет назад.",
+        "choices": [
+          { "text": "Сотрудничать", "next": "cooperate" },
+          {
+            "text": "Торговаться",
+            "conditions": { "high_trust": true },
+            "next": "bargain"
+          },
+          { "text": "Отказать", "next": "reject" }
+        ]
+      },
+      "cooperate": {
+        "speaker": "system",
+        "text": "Ты открываешь журнал.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "trust": 5,
+              "flags": { "rust_cooperate": true }
+            }
+          }
+        ]
+      },
+      "bargain": {
+        "speaker": "system",
+        "text": "Руст соглашается снизить давление на станцию.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "stability": 5,
+              "flags": { "rust_bargain": true }
+            }
+          }
+        ]
+      },
+      "reject": {
+        "speaker": "system",
+        "text": "Руст смотрит холодно.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "attention": 10,
+              "flags": { "rust_rejected": true }
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  "zoya_day3": {
+    "start": "intro",
+    "nodes": {
+      "intro": {
+        "speaker": "Зоя",
+        "text": "Я потерялась.",
+        "choices": [
+          { "text": "Расспросить", "next": "ask" },
+          { "text": "Отправить на Перевал", "next": "pereval" },
+          { "text": "Отправить на Рынок", "next": "market" },
+          { "text": "Отправить в Город", "next": "city" },
+          { "text": "Оставить на станции", "next": "stay" }
+        ]
+      },
+      "ask": {
+        "speaker": "Зоя",
+        "text": "Стены поют. Они знают меня.",
+        "choices": [
+          { "text": "Перевал", "next": "pereval" },
+          { "text": "Рынок", "next": "market" },
+          { "text": "Город", "next": "city" },
+          { "text": "Оставить", "next": "stay" }
+        ]
+      },
+      "pereval": {
+        "speaker": "system",
+        "text": "Зоя отправляется на Перевал.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "energy": -2,
+              "flags": { "zoya_pereval": true }
+            }
+          }
+        ]
+      },
+      "market": {
+        "speaker": "system",
+        "text": "Зоя отправляется на Рынок.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "energy": -2,
+              "flags": { "zoya_market": true }
+            }
+          }
+        ]
+      },
+      "city": {
+        "speaker": "system",
+        "text": "Зоя отправляется в Город.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "energy": -2,
+              "flags": { "zoya_city": true }
+            }
+          }
+        ]
+      },
+      "stay": {
+        "speaker": "system",
+        "text": "Зоя остаётся на станции.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "flags": { "zoya_stayed": true }
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  "yan_reya_day3": {
+    "start": "intro",
+    "nodes": {
+      "intro": {
+        "speaker": "Ян",
+        "text": "Мы хотим быть вместе.",
+        "choices": [
+          { "text": "Расспросить", "next": "ask" },
+          { "text": "Пропустить обоих", "next": "both" },
+          { "text": "Пропустить одного", "next": "one" },
+          { "text": "Отказать обоим", "next": "reject" }
+        ]
+      },
+      "ask": {
+        "speaker": "Рея",
+        "text": "Отец Яна объявлен в розыск.",
+        "choices": [
+          { "text": "Пропустить обоих", "next": "both" },
+          { "text": "Одного", "next": "one" },
+          { "text": "Отказать", "next": "reject" }
+        ]
+      },
+      "both": {
+        "speaker": "system",
+        "text": "Они уходят вместе.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "energy": -4,
+              "trust": 6,
+              "flags": { "yan_reya_both": true }
+            }
+          }
+        ]
+      },
+      "one": {
+        "speaker": "system",
+        "text": "Один остаётся.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "energy": -2,
+              "flags": { "yan_reya_split": true }
+            }
+          }
+        ]
+      },
+      "reject": {
+        "speaker": "system",
+        "text": "Они уходят в разные стороны.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "trust": -5,
+              "flags": { "yan_reya_rejected": true }
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  "grey_day4": {
+    "start": "intro",
+    "nodes": {
+      "intro": {
+        "speaker": "Советник Грей",
+        "text": "Маршрут для беженцев должен быть закрыт.",
+        "choices": [
+          { "text": "Согласиться", "next": "agree" },
+          { "text": "Отказать", "next": "reject" },
+          { "text": "Торговаться", "next": "bargain" }
+        ]
+      },
+      "agree": {
+        "speaker": "system",
+        "text": "Маршрут закрыт по приказу Города.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "stability": 10,
+              "flags": { "grey_agreed": true }
+            }
+          }
+        ]
+      },
+      "reject": {
+        "speaker": "system",
+        "text": "Грей предупреждает о последствиях.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "attention": 15,
+              "flags": { "grey_rejected": true }
+            }
+          }
+        ]
+      },
+      "bargain": {
+        "speaker": "system",
+        "text": "Удалось отсрочить решение.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "trust": 5,
+              "flags": { "grey_bargain": true }
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  "hasan_day4": {
+    "start": "intro",
+    "nodes": {
+      "intro": {
+        "speaker": "Хасан",
+        "text": "Я хочу увидеть дочь.",
+        "choices": [
+          { "text": "Расспросить", "next": "ask" },
+          { "text": "Пропустить", "next": "pass" },
+          { "text": "Отказать", "next": "reject" }
+        ]
+      },
+      "ask": {
+        "speaker": "Хасан",
+        "text": "Она не хочет меня видеть. Но я должен попробовать.",
+        "choices": [
+          { "text": "Пропустить", "next": "pass" },
+          {
+            "text": "Предложить письмо",
+            "conditions": { "high_trust": true },
+            "next": "letter"
+          },
+          { "text": "Отказать", "next": "reject" }
+        ]
+      },
+      "pass": {
+        "speaker": "system",
+        "text": "Хасан проходит.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "energy": -2,
+              "flags": { "hasan_passed": true }
+            }
+          }
+        ]
+      },
+      "letter": {
+        "speaker": "system",
+        "text": "Письмо отправлено вместо личной встречи.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "flags": { "hasan_letter": true }
+            }
+          }
+        ]
+      },
+      "reject": {
+        "speaker": "system",
+        "text": "Старик уходит медленно.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "trust": -4,
+              "flags": { "hasan_rejected": true }
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  "polly_day4": {
+    "start": "intro",
+    "nodes": {
+      "intro": {
+        "speaker": "Полли",
+        "text": "Генератор нестабилен. Я могу его починить.",
+        "choices": [
+          { "text": "Полный ремонт", "next": "full" },
+          { "text": "Частичный ремонт", "next": "partial" },
+          { "text": "Отказаться", "next": "reject" }
+        ]
+      },
+      "full": {
+        "speaker": "system",
+        "text": "Генератор перезапущен полностью.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "stability": 30,
+              "flags": { "echo_memory_lost": true }
+            }
+          }
+        ]
+      },
+      "partial": {
+        "speaker": "system",
+        "text": "Генератор стабилизирован частично.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "stability": 15,
+              "flags": { "echo_saved": true }
+            }
+          }
+        ]
+      },
+      "reject": {
+        "speaker": "system",
+        "text": "Генератор остаётся нестабильным.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": {
+              "stability": -10,
+              "flags": { "polly_rejected": true }
+            }
+          }
+        ]
+      }
+    }
+  }
+  ,
+
+  "refugees_day5": {
+    "start": "intro",
+    "nodes": {
+      "intro": {
+        "speaker": "system",
+        "text": "Перед тобой стоят семь человек. Энергии хватит только на троих.",
+        "choices": [
+          {
+            "text": "Открыть выбор",
+            "next": "selection"
+          }
+        ]
+      },
+      "selection": {
+        "speaker": "system",
+        "text": "Анна с младенцем. Старая Берта. Близнецы Макс и Лео. Доктор Ирен. Рома. Лиза.",
+        "choices": [
+          {
+            "text": "Подтвердить выбор",
+            "next": "end",
+            "consequences": {
+              "energy": -3,
+              "flags": { "refugees_processed": true }
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  "elias_day5": {
+    "start": "n1",
+    "nodes": {
+      "n1": { "speaker": "Элиас", "text": "Ты думаешь, что управляешь станцией?", "choices": [{ "text": "...", "next": "n2" }] },
+      "n2": { "speaker": "Элиас", "text": "Лина не исчезла.", "choices": [{ "text": "...", "next": "n3" }] },
+      "n3": { "speaker": "Элиас", "text": "Она стала генератором.", "choices": [{ "text": "...", "next": "n4" }] },
+      "n4": { "speaker": "Элиас", "text": "Эхо — это она.", "choices": [{ "text": "...", "next": "n5" }] },
+      "n5": { "speaker": "Элиас", "text": "Она чувствует каждый твой выбор.", "choices": [{ "text": "...", "next": "n6" }] },
+      "n6": { "speaker": "Элиас", "text": "Скоро станция не выдержит.", "choices": [{ "text": "...", "next": "n7" }] },
+      "n7": {
+        "speaker": "system",
+        "text": "Запись дневника 4 разблокирована.",
+        "choices": [
+          {
+            "text": "Продолжить",
+            "next": "end",
+            "consequences": {
+              "flags": {
+                "diary_4_unlocked": true,
+                "echo_awakened": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  "cross_day6": {
+    "start": "intro",
+    "nodes": {
+      "intro": {
+        "speaker": "Кросс",
+        "text": "Это последний ультиматум. Закрой маршрут.",
+        "choices": [
+          {
+            "text": "Переубедить",
+            "conditions": { "high_trust": true },
+            "next": "convince"
+          },
+          { "text": "Согласиться", "next": "agree" },
+          { "text": "Отказать", "next": "reject" }
+        ]
+      },
+      "convince": {
+        "speaker": "Кросс",
+        "text": "Ты уверен?",
+        "choices": [
+          {
+            "text": "Да",
+            "next": "end",
+            "consequences": {
+              "trust": 5,
+              "flags": { "military_withdraw": true }
+            }
+          }
+        ]
+      },
+      "agree": {
+        "speaker": "system",
+        "text": "Маршрут закрыт.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": { "stability": 10 }
+          }
+        ]
+      },
+      "reject": {
+        "speaker": "system",
+        "text": "Военные начинают операцию.",
+        "choices": [
+          {
+            "text": "Далее",
+            "next": "end",
+            "consequences": { "attention": 20 }
+          }
+        ]
+      }
+    }
+  },
+
+  "vira_day6": {
+    "start": "intro",
+    "nodes": {
+      "intro": {
+        "speaker": "Вира",
+        "text": "Снова я.",
+        "choices": [
+          {
+            "text": "Если помог",
+            "conditions": { "vira_helped": true },
+            "next": "grateful"
+          },
+          {
+            "text": "Если отказал",
+            "conditions": { "vira_rejected": true },
+            "next": "angry"
+          },
+          {
+            "text": "Если частично",
+            "conditions": { "vira_partial": true },
+            "next": "neutral"
+          }
+        ]
+      },
+      "grateful": {
+        "speaker": "Вира",
+        "text": "Ты спас людей. Держи — немного энергии.",
+        "choices": [
+          {
+            "text": "Пропустить",
+            "next": "end",
+            "consequences": { "energy": 2, "trust": 5 }
+          }
+        ]
+      },
+      "angry": {
+        "speaker": "Вира",
+        "text": "Из‑за тебя они умерли.",
+        "choices": [
+          {
+            "text": "Пропустить",
+            "next": "end",
+            "consequences": { "stability": -5 }
+          }
+        ]
+      },
+      "neutral": {
+        "speaker": "Вира",
+        "text": "Сегодня только лекарства.",
+        "choices": [
+          { "text": "Пропустить", "next": "end" }
+        ]
+      }
+    }
+  },
+
+  "ghost_event_day6": {
+    "start": "g1",
+    "nodes": {
+      "g1": { "speaker": "Лина", "text": "Ты слышишь меня?", "choices": [{ "text": "...", "next": "g2" }] },
+      "g2": { "speaker": "Лина", "text": "Я больше не могу держать всё одна.", "choices": [{ "text": "...", "next": "g3" }] },
+      "g3": {
+        "speaker": "Лина",
+        "text": "Скоро придётся выбрать.",
+        "choices": [
+          {
+            "text": "Я готов.",
+            "next": "end",
+            "consequences": {
+              "flags": { "final_phase_started": true }
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  "final_day7": {
+    "start": "f1",
+    "nodes": {
+      "f1": {
+        "speaker": "Эхо",
+        "text": "Ты знаешь правду.",
+        "choices": [{ "text": "...", "next": "f2" }]
+      },
+      "f2": {
+        "speaker": "Эхо",
+        "text": "Я — это Лина.",
+        "choices": [{ "text": "...", "next": "f3" }]
+      },
+      "f3": {
+        "speaker": "Эхо",
+        "text": "Я устала.",
+        "choices": [
+          { "text": "Я займу твоё место", "next": "ending_a" },
+          { "text": "Я заберу тебя отсюда", "next": "ending_b" },
+          { "text": "Я ухожу", "next": "ending_c" },
+          {
+            "text": "Есть другой путь",
+            "conditions": { "all_diaries_found": true },
+            "next": "ending_d"
+          }
+        ]
+      },
+
+      "ending_a": {
+        "speaker": "system",
+        "text": "Ты кладёшь руки на генератор.",
+        "choices": [
+          {
+            "text": "Принять",
+            "next": "end",
+            "consequences": { "flags": { "ending": "A" } }
+          }
+        ]
+      },
+
+      "ending_b": {
+        "speaker": "system",
+        "text": "Ты разрываешь связи света.",
+        "choices": [
+          {
+            "text": "Держать её",
+            "next": "end",
+            "consequences": { "flags": { "ending": "B" } }
+          }
+        ]
+      },
+
+      "ending_c": {
+        "speaker": "system",
+        "text": "Ты уходишь.",
+        "choices": [
+          {
+            "text": "Закрыть дверь",
+            "next": "end",
+            "consequences": { "flags": { "ending": "C" } }
+          }
+        ]
+      },
+
+      "ending_d": {
+        "speaker": "system",
+        "text": "Координаты старой тропы активированы.",
+        "choices": [
+          {
+            "text": "Запустить",
+            "next": "end",
+            "consequences": { "flags": { "ending": "D" } }
+          }
+        ]
+      }
+    }
+  }
+
 }
